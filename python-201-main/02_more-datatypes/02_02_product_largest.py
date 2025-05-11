@@ -8,3 +8,5 @@
 from resources import randlist
 
 print(randlist)
+print(f"The largest number in the list is: {max(randlist)}")
+print(f"The sum of the list is: {sum(randlist)}")
