@@ -15,5 +15,24 @@
 from resources import randlist
 
 print(randlist)
+from resources import randlist
 
-# Write your code below here
+# Step 1: Sort the list
+randlist.sort()
+
+# Step 2: Prepare a list for storing tuples
+tuple_list = []
+
+# Step 3: If there's an odd number of elements, add a 0 at the end
+if len(randlist) % 2 != 0:
+    randlist.append(0)
+
+# Step 4: Loop through the list two items at a time
+for num in range(0, len(randlist), 2):
+    pair = (randlist[num], randlist[num + 1])
+    tuple_list.append(pair)
+
+# Step 5: Print each tuple
+for t in tuple_list:
+    print(t)
+       
