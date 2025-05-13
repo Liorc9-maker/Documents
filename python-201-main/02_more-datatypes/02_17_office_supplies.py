@@ -22,3 +22,9 @@ office = [
     {"full_name": "Creed Bratton", "item": "mung beans"},
     {"full_name": "Darryl Philbin", "item": "forklift"},
 ]
+
+for person in office:
+    first_name, last_name = person["full_name"].split(maxsplit = 1)
+    item = person["item"]
+    formatted_name = f"{last_name.upper()}, {first_name}"
+    print(f"{formatted_name:<25} {item}")
