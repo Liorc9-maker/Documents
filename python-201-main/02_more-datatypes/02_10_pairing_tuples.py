@@ -15,7 +15,6 @@
 from resources import randlist
 
 print(randlist)
-from resources import randlist
 
 # Step 1: Sort the list
 randlist.sort()
