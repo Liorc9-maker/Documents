@@ -8,64 +8,52 @@
 #Use the random module to add a multiplier to your battles, similar to a dice roll in a real game. This pseudo-random element can have an 
 # effect on whether your player wins or loses when battling an opponent.
 
+door_options = {"left", "right"}
+look_options = {"return", "look around"}
+sword_options = {"yes", "no"}
+dragon_options = {"fight", "return"}
 
 player = input("Please type your name: ")
 print(f"Hello {player}. \nWelcome to the game world!")
+
 door = (input("choose between the left or the right door. \nType right/left: ").lower())
-while door == "left":
-    left_door_coise = (input("You see an empty room. \nType return/look around: ").lower())
-    if left_door_coise == "look around":
-        print("You look around the empty room and find a sword")
-        sword_choise = (input("Take the sword or leave is? \nType yes/no: ").lower())
-        if sword_choise == "yes":
-            print("You returned and entered the right door \nYou see a dragon in the room.")
-            dragon_choise = (input("Fight the dragon or return \nType fight/return: ").lower())
-            if dragon_choise == "fight":
-                print("You won!!!")    
+while door not in door_options:
+    door = input("Invalid choice. Type right or left: ").lower()
+
+has_sword = False
+while True:
+    if door == "left":
+        left_choice = (input("You see an empty room. \nType return/look around: ").lower())
+        while left_choice not in look_options:
+            left_choice = input("Invalid choice. Type return/look around: ").lower()    
+
+        if left_choice == "look around":
+            print("You look around the empty room and find a sword.")
+            sword_choice = input("Take the sword or leave it? \nType yes/no: ").lower()
+            while sword_choice not in sword_options:
+                sword_choice = input("Invalid choice. Type yes/no: ").lower()
+
+            if sword_choice == "yes":
+                has_sword = True
+                print("You returned and entered the right door. You see a dragon in the room.")
+                door = "right"
+            else:
+                continue  # Loop back to left room
+
+        elif left_choice == "return":
+            door = "right"
+
+    elif door == "right":
+        print("You see a dragon in the room.")
+        dragon_choice = input("Fight the dragon or return? \nType fight/return: ").lower()
+        while dragon_choice not in dragon_options:
+            dragon_choice = input("Invalid choice. Type fight/return: ").lower()
+
+        if dragon_choice == "fight":
+            if has_sword:
+                print("You fight the dragon with your sword. You won!!!")
+            else:
+                print("You tried to fight the dragon bare-handed. You've been eaten! \nYou lost.")
             break
-    else:
-        if left_door_coise == "return":
-            print("You returned and entered the right door \nYou see a dragon in the room.")
-            dragon_choise = input("Fight the dragon or return \nType fight/return: ")
-            if dragon_choise == "fight":
-                 print("You've been eaten by the dragon! \nYou lost.") 
-                 break
-        else:
-            if dragon_choise == "return":
-                print("You went back and entered the left room, you look around and find a sword")
-                sword_choise = (input("Take the sworr or leave is? \nType yes/no: ").lower())
-                if sword_choise == "yes":
-                        print("You returned and entered the right door \nYou see a dragon in the room.")
-                        dragon_choise = (input("Fight the dragon or return \nType fight/return: ").lower())
-                        if dragon_choise == "fight":
-                                print("You won!!!")
-                                break    
-else: 
-    while door == "right":
-        print("You returned and entered the right door \nYou see a dragon in the room.")
-        dragon_choise = input("Fight the dragon or return \nType fight/return: ")
-        if dragon_choise == "fight":
-             print("You've been eaten by the dragon! \nYou lost.") 
-             break
-        else:
-            if dragon_choise == "return":
-                print("You went back and entered the left room")
-                left_door_coise = (input("You see an empty room. \nType return/look around: ").lower())
-                if left_door_coise == "look around":
-                    print("You've looked around the left room and found a sword.")
-                    sword_choise = (input("Take the sword or leave it? \nType yes/no: ").lower())
-                    if sword_choise == "yes":
-                        print("You returned and entered the right door \nYou see a dragon in the room.")
-                        dragon_choise = (input("Fight the dragon or return \nType fight/return: ").lower())
-                        if dragon_choise == "fight":
-                            print("You won!!!")
-                        break
-                    elif sword_choise == "no":
-                        print("You look around the empty room and find a sword")
-                        sword_choise = (input("Take the sword or leave it? \nType yes/no: ").lower())
-                        if sword_choise == "yes":
-                            print("You returned and entered the right door \nYou see a dragon in the room.")  
-                            dragon_choise = (input("Fight the dragon or return \nType fighe/return: ").lower())
-                            if dragon_choise == "fight":
-                                print("You Won!")
-                                break         
+        elif dragon_choice == "return":
+            door = "left"
