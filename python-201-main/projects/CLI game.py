@@ -16,7 +16,7 @@ dragon_options = {"fight", "return"}
 player = input("Please type your name: ")
 print(f"Hello {player}. \nWelcome to the game world!")
 
-door = (input("choose between the left or the right door. \nType right/left: ").lower())
+door = (input("Choose between the left or the right door. \nType right/left: ").lower())
 while door not in door_options:
     door = input("Invalid choice. Type right or left: ").lower()
 
