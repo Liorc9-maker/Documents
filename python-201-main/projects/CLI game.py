@@ -13,6 +13,8 @@ look_options = {"return", "look around"}
 sword_options = {"yes", "no"}
 dragon_options = {"fight", "return"}
 
+
+
 player = input("Please type your name: ")
 print(f"Hello {player}. \nWelcome to the game world!")
 
