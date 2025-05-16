@@ -12,7 +12,7 @@ door_options = {"left", "right"}
 look_options = {"return", "look around"}
 sword_options = {"yes", "no"}
 dragon_options = {"fight", "return"}
-
+inventory = []
 
 
 player = input("Please type your name: ")
